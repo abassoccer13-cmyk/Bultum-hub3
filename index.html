@@ -3499,7 +3499,7 @@ function TabMorning(p){
           selStu ? (function(){
             var stu=p.students.find(function(s){return s.id===selStu.id;})||selStu;
             var ints=(stu.interests||[]);
-            var nweaRow=nweaData.find(function(r){return r.matched&&r.matched.id===stu.id;});
+            var nweaRow=(p.nweaData||[]).find(function(r){return r.matched&&r.matched.id===stu.id;});
             var gaps=nweaRow?getGaps(nweaRow):[];
             var trackerLow=Object.keys(p.scores[stu.id]||{}).filter(function(sid){return (p.scores[stu.id][sid]||0)<75;}).length;
             return h("div",{style:{background:"#f0f9ff",border:"1.5px solid #bae6fd",borderRadius:8,padding:"10px 12px",marginBottom:12}},
