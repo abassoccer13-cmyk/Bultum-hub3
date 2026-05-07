@@ -3468,7 +3468,7 @@ function TabMorning(p){
         selStu&&loadStuDoc(selStu.id)
           ?h("div",{style:{background:"#f0fdf4",border:"1px solid #059669",borderRadius:8,
               padding:"6px 10px",marginTop:6,fontSize:11,fontWeight:700,color:"#059669"}},
-              "\uD83D\uDCC4 "+loadStuDoc(selStu.id).fileName+" — will be used to target weak areas")
+              "\uD83D\uDCC4 "+((loadStuDoc(selStu.id)||{}).fileName||"Report")+" — will be used to target weak areas")
           :h("div",{style:{background:"#fff7ed",border:"1px solid #fed7aa",borderRadius:8,
               padding:"6px 10px",marginTop:6,fontSize:11,color:"#9a3412"}},
               "\uD83D\uDCCE No report uploaded — add one in Student Profiles tab"),
@@ -3496,7 +3496,7 @@ function TabMorning(p){
           ),
 
           /* Student summary box */
-          selStu ? (function(){
+          selStu&&selStu.id ? (function(){
             var stu=p.students.find(function(s){return s.id===selStu.id;})||selStu;
             var ints=(stu.interests||[]);
             var nweaRow=(p.nweaData||[]).find(function(r){return r.matched&&r.matched.id===stu.id;});
